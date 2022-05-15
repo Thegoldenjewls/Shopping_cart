@@ -13,38 +13,37 @@
 #     return "Hi,(name) Welcome to your shopping cart!"
 
 print("""
-    Add item, enter: 1
-    Remove item, enter: 2
-    View cart, enter: 3
-    To Checkout, enter: 0    
+    Hello! Welcome to your shopping cart!
+    Choose your next action using digits (1-4).
+
+    Add item: 1
+    Remove item: 2
+    View cart: 3
+    To Checkout: 4    
 """)
 
-
 shopping_cart = {}
-option = int(input("What would you like to do?"))
-while option != 0:
+message = f'\n\nThank you for shopping! Here is your receipt:\n'
+option = int(input("What would you like to do? "))
+
+while option != 4:
     if option == 1:
-        item = input("What item would you like to add?")
-        qnty = int(input('How Many?'))
+        item = input("Please tell me what you would like to add? ")
+        qnty = int(input('How Many? '))
         shopping_cart[item] = qnty
+       
     elif option == 2:
-        item = input("Which item would you like to remove?")
+        item = input("Which item would you like to remove? ")
         del(shopping_cart[item])
     elif option == 3:
         for item in shopping_cart:
             print(item,":",shopping_cart[item])
-    elif option != 0:
-        print("Not Possible")
-
-
-    print("
-    Add item, enter: 1
-    Remove item, enter: 2
-    View cart, enter: 3
-    To Checkout, enter: 0    
-")
-    option = int(input("\n\nWhat would you like to do?:  "))
+    elif option != 4:
+        print("\nAction Not Possible")
+    option = int(input("""\nWhat next? 
+        Add: 1 Remove: 2 View Cart: 3 Checkout: 4
+        """ ))
 else:
-    print(shopping_cart)
-
-    print("\n\nShopping basket program closed.")
+    print(message)
+    print(item,":",shopping_cart[item])
+    print("\n\nSHOPPING CART CLOSED.")
